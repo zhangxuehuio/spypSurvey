@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-4-25 13:26:56 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.csisc.survey.model.User" table="USER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="address_province" type="java.lang.String">
+            <column name="ADDRESS_PROVINCE" />
+        </property>
+        <property name="address_city" type="java.lang.String">
+            <column name="ADDRESS_CITY" />
+        </property>
+        <property name="address_county" type="java.lang.String">
+            <column name="ADDRESS_COUNTY" />
+        </property>
+        <property name="address_other" type="java.lang.String">
+            <column name="ADDRESS_OTHER" />
+        </property>
+        <property name="QHDM" type="int">
+            <column name="QHDM" />
+        </property>
+        <property name="legalName" type="java.lang.String">
+            <column name="LEGALNAME" />
+        </property>
+        <property name="postalCode" type="int">
+            <column name="POSTALCODE" />
+        </property>
+        <property name="tel" type="java.lang.String">
+            <column name="TEL" />
+        </property>
+        <property name="faxNumber" type="java.lang.String">
+            <column name="FAXNUMBER" />
+        </property>
+        <property name="level" type="int">
+            <column name="LEVEL" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -8,5 +8,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
     <context:component-scan base-package="com.csisc.survey.controller"/>
     <mvc:annotation-driven/>
-
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!-- 将静态文件(样式表,JS等)指定到某个特殊的文件夹中统一处理     **两个*表示所有 子文件及子文件夹中的文件-->
+    <mvc:resources location="/assets/" mapping="assets/**"/>
+    <mvc:resources location="/images/" mapping="images/**"/>
+    <mvc:resources location="/page/" mapping="page/**"/>
 </beans>

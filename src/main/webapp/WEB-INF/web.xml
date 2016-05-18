@@ -21,7 +21,14 @@
         <filter-name>CharacterFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.csisc.survey.filter.loginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/home</url-pattern>
+    </filter-mapping>
 
 
 
