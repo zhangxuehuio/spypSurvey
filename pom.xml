@@ -179,6 +179,6 @@
     </dependencies>
 
     <build>
-        <finalName>tan-springmvc-book</finalName>
+        <finalName>spypSurvey</finalName>
     </build>
 </project>

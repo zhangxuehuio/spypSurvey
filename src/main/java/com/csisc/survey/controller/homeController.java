@@ -31,7 +31,7 @@ public class homeController {
         return "OK";
     }
 
-    @RequestMapping("/getAnswer")
+    @RequestMapping(value = "/getAnswer",produces = "application/json; charset=utf-8")
     public @ResponseBody String getAnswer(HttpServletRequest hsq, int page, Model model){
         User u=(User) hsq.getSession().getAttribute("loginUser");
         if(u==null){

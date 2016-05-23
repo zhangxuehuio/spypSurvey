@@ -130,14 +130,16 @@ public class UserService implements UserDao {
     }
     public User login(String username,String password){
         User u=null;
-        u=findUserByName(username);
-        if(u!=null){
-            if(u.getPassword().equals(password)){
-                return u;
-            }else{
-                return null;
-            }}else{
+        try{
+            u=findUserByName(username);
+        }catch (Exception e){
             return null;
         }
+        if(u!=null) {
+            if (u.getPassword().equals(password)) {
+                return u;
+            }
+        }
+        return null;
     }
 }

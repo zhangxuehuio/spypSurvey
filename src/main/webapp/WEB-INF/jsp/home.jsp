@@ -35,7 +35,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 }
             });
             //从数据库得到结果渲染到页面
-
+            $("#ComResult").val("");
             loadAnswer();
 
 
@@ -96,7 +96,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         });
         function save(){
             var page=$("#iframepage").attr("page");
-            var result="{\"page\":"+page+",\"result\":[";
+            var comResult=$("#ComResult").val();
+            var result="{\"page\":"+page+",\"comResult\":\""+comResult+"\",\"result\":[";
             $("iframe").contents().find("td").each(function(index,domEle){
                 if($(domEle).css("background-color")=="rgb(255, 64, 64)"){
                     result+="{\"id\":"+index+",\"answer\":\""+$(domEle).attr('result')+"\"},"
@@ -131,11 +132,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             var tds=$("iframe").contents().find("td").toArray();
             var page=$("#iframepage").attr("page");
             $.getJSON("home/getAnswer","page="+page,function(data,status){
+
                 $.each(data.result,function(i,item){
                     tds[item.id].setAttribute("result",item.answer);
                     tds[item.id].style.backgroundColor="#FF4040";
                     console.log(item.id+item.answer);
                 });
+                $("#ComResult").val(data.comResult);
+
             });
         }
         function message(){
@@ -168,9 +172,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             }
         }
 
-        function info(){
-            NextPage();
-        }
+
     </script>
 </head>
 <body>
@@ -185,7 +187,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <header id="header">
         <h1><a href="index.jsp" >CSISC食药监调研问卷系统</a></h1>
         <center><button id="save" type="button" value="" onclick="save()">提交并跳转到下一页</button>
-            <button id="info" type="button" onclick="info()" style="background-color: gray">填写说明</button>
+            <%--<button id="info" type="button" onclick="info()" style="background-color: gray">填写说明</button>--%>
         </center>
         <nav id="nav">
             <ul>
@@ -209,7 +211,13 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <!-- Main -->
     <article id="main">
         <iframe level='${loginUser.level }' page="1" id="iframepage" name="iframepage" onLoad="iFrameHeight()" scrolling="no" src="page/${loginUser.level }/1.htm" style="background-color:rgba(29, 36, 42, 0.290196);"></iframe>
-
+        <div class="row">
+            <div class="1u">　</div>
+            <div class="10u"><p>您对整张报表的意见是?</p>
+                <textarea id="ComResult" type="text" style="height: 115px;resize: none;background-color:white;color:#000000"></textarea>
+            </div>
+        </div>
+        <br><br>
     </article>
 
     <!-- Footer -->
