@@ -103,7 +103,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     result+="{\"id\":"+index+",\"answer\":\""+$(domEle).attr('result')+"\"},"
                 }
             });
-            result=result.substring(0, result.length-1);
+            if(result.substring(result.length-1,result.length)==","){
+                result=result.substring(0, result.length-1);
+            }
             result+="]}";
             console.log(result);
             console.log(qnmd);
