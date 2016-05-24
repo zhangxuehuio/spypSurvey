@@ -26,6 +26,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <script src="assets/js/dialog-min.js"></script>
     <link href="assets/css/ui-dialog.css" rel="stylesheet" >
     <script type="text/javascript">
+        function jiaodian(){
+
+            $("#other").click();
+        }
         function iFrameHeight() {
             //修改加载好的页面的背景色
             $("iframe").contents().find("table").css("margin","0 auto");
@@ -53,7 +57,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                         var d = dialog({
                             title: "指标:"+_obj.text(),
-                            content:'<center>您的意见是:'+_result+'</center><br/><br/><br/><br/><br/><br/><br/><form class=\"question\" action=\"\" method=\"get\"><label><input name=\"question\" type=\"radio\" />A.重复填报</label><br/><label><input name=\"question\" type=\"radio\" />B.没有统计数据 </label><br/><label><input name=\"question\" type=\"radio\" />C.指标没有统计意义 </label><br/><label><input name=\"question\" type=\"radio\" />D.解释含糊不清楚 </label><br/><label><input name=\"question\" id="other" type=\"radio\" />其他意见:<input id=\"other2\"/></label><br/><label><input name=\"question\" id="cancel" type=\"radio\" />没有意见</label></form>',
+                            content:'<center>您的意见是:'+_result+'</center><br/><br/><br/><br/><br/><br/><br/><form class=\"question\" action=\"\" method=\"get\"><label><input name=\"question\" id="cancel" type=\"radio\" />1.没有意见</label><br/><label><input name=\"question\" type=\"radio\" />2.重复填报</label><br/><label><input name=\"question\" type=\"radio\" />3.无业务记录,难以获得数据</label><br/><label><input name=\"question\" type=\"radio\" />4.理解有歧义,需增加指标解释</label><br/><label><input name=\"question\" type=\"radio\" />5.建议删除 </label><br/><label><input name=\"question\" id="other" type=\"radio\" />6.其他:<input id=\"other2\" onfocus=\"jiaodian()\"/></label><br/></form>',
                             okValue:'确定',
                             ok:function(){
                                 var _changed=$("input:radio:checked");
@@ -107,8 +111,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 result=result.substring(0, result.length-1);
             }
             result+="]}";
-            console.log(result);
-            console.log(qnmd);
+
             var qnmd = dialog({
                 zIndex: 107,
                 content:'正在提交...请稍后...'

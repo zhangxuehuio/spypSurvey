@@ -21,6 +21,7 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <script type="text/javascript">
+
         function ajaxLogin(){
             var name=$("#username").val();
             var pass=$("#password").val();
@@ -55,11 +56,17 @@
 
             <span style="color:#F08080;font:18px/2 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif" id="errMsg"></span>
             <ul class="actions">
-                <form method="get" action="login">
+                <form method="get" action="login" id="loginForm">
                     <li><input type="text" name="username" id="username" value="" placeholder="用户名"  style="width: 400px"/></li><br/><br/>
                     <li><input type="password" name="password" id="password" value="" placeholder="密码"  style="width: 400px"/></li><br/><br/>
                     <li class="align-center"><input type="button" onclick="ajaxLogin()" value="提交" class="button special"/></li>
                 </form>
+                <div id="browserError" style="display: none">
+                    <img src="/images/error.gif"/>
+                    <p>对不起,为了给您更好的问卷体验,请您使用 <strong>金山猎豹浏览器</strong> 再次访问本页面</p>
+                    <p>下载地址:<a href="http://www.liebao.cn/windows.html">金山猎豹官网下载</a></p>
+
+                </div>
             </ul>
         </div>
         <a href="#footer" class="more scrolly">About Us</a>
@@ -90,6 +97,15 @@
 <script src="assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+<script type="application/javascript">
+    var userAgent = navigator.userAgent;
+    if(userAgent.indexOf("LBBROWSER")<0){
+        document.getElementById("loginForm").style.display="none";
+        document.getElementById("browserError").style.display="";
+
+    }
+
+</script>
 
 
 
